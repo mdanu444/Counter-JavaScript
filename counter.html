@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background: rgb(194, 194, 194);
+        }
+        .message{
+            background-color: rgb(248, 223, 223);padding: 50px;
+            font-size: 30px;font-weight: bold;position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            box-shadow: inset -1px -1px 5px rgb(68, 68, 68);
+            display: block; 
+        }
+        input:focus{
+            background: rgb(229, 255, 0); margin: 0; padding: 3px; border: 0; border-color: red;;
+        }
+        #container{
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+        }
+
+    </style>
+</head>
+<body>
+    <div id='box' class="message">
+        <p>Welcome to my website</p>
+        <ul id='container'>
+            <li id='coun' data-target = "10000"></li>
+            <li id='coun' data-target = "15000"></li>
+            <li id='coun' data-target = "20000"></li>
+        </ul>
+    </div>
+<script>
+var coun = document.querySelectorAll('#coun');
+  coun.forEach((li)=>{
+    li.innerHTML = 0;
+
+
+    function counter(){
+    let targetVal = Number(li.getAttribute("data-target"));
+    let startingnumber = Number(li.innerHTML);
+    let counterDevder = targetVal / 100;
+    console.log(startingnumber);
+
+    if(startingnumber < targetVal){
+            li.innerHTML = `${startingnumber+counterDevder}`; 
+            setTimeout(counter, 10);
+        }
+    }
+    counter();
+
+
+});
+
+
+
+
+</script>
+</body>
+</html>
